@@ -63,6 +63,10 @@ based on [sample.tslint.json](https://github.com/palantir/tslint/blob/master/doc
         
         gulp lint
 
+8. (optional)
+
+        jspm inspect -f
+        jspm update
 
 ### refs
 http://www.eriklieben.com/aurelia-skeleton-navigation-to-typescript/
