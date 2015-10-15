@@ -1,0 +1,97 @@
+<template>
+  <section>
+    <h2>${heading}</h2>
+
+    <form role="form">
+      <label for="Etieuthu">E<sub>tieuthu</sub> - Công suất tiêu thụ điện của nhà máy (Kwh/ngày):</label>
+      <input type="number" value.bind="Etieuthu" id="Etieuthu">
+      <br/>
+      <label>EF<sub>i, dien</sub> - Hệ số phát thải KNK của nhiên liệu (kg CO<sub>2-tuongduong</sub>/Kwh)</label>
+      <table class="table table-bordered"><tbody>
+        <tr>
+          <th>Thủy điện</th>
+          <th>Hạt nhân</th>
+          <th>Than</th>
+          <th>Khí tự nhiên</th>
+          <th>Năng lượng sinh học, gió, thủy triều</th>
+          <th>Nhiên liệu khác</th>
+        </tr>
+        <tr>
+          <td><input type="number" min="16" max="410" value.bind="EF.thuydien"></td>
+          <td><input type="number" min="9" max="30" value.bind="EF.hatnhan"></td>
+          <td><input type="number" min="860" max="1290" value.bind="EF.than"></td>
+          <td><input type="number" min="460" max="1234" value.bind="EF.khi"></td>
+          <td><input type="number" min="11" max="279" value.bind="EF.xach"></td>
+          <td><input type="number" min="689" max="890" value.bind="EF.khac"></td>
+        </tr>
+      </tbody></table>
+      <label>PrF<sub>i</sub> - Tỷ lệ đóng góp của nhiên liệu i sản xuất điện đáp ứng nhu cầu sử dụng điện của nhà máy xử lý (%)</label>
+      <table class="table table-bordered"><tbody>
+      <tr>
+        <th>Tỉnh</th>
+        <th>Thủy điện</th>
+        <th>Hạt nhân</th>
+        <th>Than</th>
+        <th>Khí tự nhiên</th>
+        <th>Năng lượng sinh học, gió, thủy triều</th>
+        <th>Nhiên liệu khác</th>
+      </tr>
+      <tr repeat.for="PrF of eneryPercents" value.bind="PrF">
+        <td>${PrF.place}</td>
+        <td>${PrF.thuydien}</td>
+        <td>${PrF.hatnhan}</td>
+        <td>${PrF.than}</td>
+        <td>${PrF.khi}</td>
+        <td>${PrF.xach}</td>
+        <td>${PrF.khac} (${PrF.khacLegend})</td>
+      </tr>
+      </tbody></table>
+      <label>m<sub>CO2,dien</sub> - Lượng phát thải KNK do nhu cầu sử dụng điện của nhà máy (kg CO<sub>2-tuongduong</sub>/ ngày):</label>
+      <br/><label style="color: red">${mCO2dien}</label>
+      <hr/>
+
+      <label>M<sub>i, nhienlieuj</sub> - Khối lượng của nhiên liệu (m3/ngày)</label>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-xs-1">
+          <col class="col-xs-4">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th>Loại</th>
+          <th>Khối lượng</th>
+        </tr>
+        <tr repeat.for="M of MNhienLieus" value.bind="M">
+          <td>${M.name}</td>
+          <td><input type="number" min="0" value.bind="M.m"></td>
+        </tr>
+        </tbody>
+      </table>
+      <label>M<sub>i, nguyenlieuj</sub> - Khối lượng của nguyên liệu (m3/ngày)</label>
+      <table class="table table-bordered table-striped">
+        <colgroup>
+          <col class="col-xs-1">
+          <col class="col-xs-4">
+        </colgroup>
+        <tbody>
+        <tr>
+          <th>Nguyên liệu</th>
+          <th>Khối lượng</th>
+        </tr>
+        <tr repeat.for="M of MNguyenLieus" value.bind="M">
+          <td>${M.name}</td>
+          <td><input type="number" min="0" value.bind="M.m"></td>
+        </tr>
+        </tbody>
+      </table>
+      <label>m<sub>CO2,nguyenNhienLieu</sub> -
+        Lượng phát thải KNK do nhu cầu sử dụng nguyên nhiên liệu của nhà máy
+        (kg CO<sub>2-tuongduong</sub>/ ngày<span style="color: red;">, được tính theo GWP trong khoảng thời gian 20 năm</span>):</label>
+      <br/><label style="color: red">${mCO2nguyenNhienLieu}</label>
+      <hr/>
+
+      <label>m<sub>CO2, giantiep</sub> - Lượng phát thải KNK (khí nhà kính) gián tiếp (kg CO<sub>2-tuongduong</sub>/ngày):</label>
+      <br/><label style="color: red">${mCO2dien + mCO2nguyenNhienLieu}</label>
+    </form>
+  </section>
+</template>
