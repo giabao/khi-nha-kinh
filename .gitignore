@@ -7,3 +7,4 @@ bower_components
 build/reports
 typings/core-js
 typings/whatwg-fetch
+/electron

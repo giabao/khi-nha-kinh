@@ -8,7 +8,8 @@ This skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets
 > To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/). If you have questions, we invite you to [join us on Gitter](https://gitter.im/aurelia/discuss). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome Extension and visit any of our repository's boards. You can get an overview of all Aurelia work by visiting [the framework board](https://github.com/aurelia/framework#boards).
 
 ## This branch using typescript
-Diff from master branch:
+
+### Diff from master branch:
 
 1. Install the gulp typescript compiler scripts
 
@@ -67,6 +68,13 @@ based on [sample.tslint.json](https://github.com/palantir/tslint/blob/master/doc
 
         jspm inspect -f
         jspm update
+
+### Electron
+Build electron app:
+
++ Change `main` field in `package.json` from `dist/main.js` to `electron-main.js`
+
++ run `gulp electron`
 
 ### refs
 http://www.eriklieben.com/aurelia-skeleton-navigation-to-typescript/

@@ -34,6 +34,7 @@
     "gulp-babel": "^5.1.0",
     "gulp-bump": "^1.0.0",
     "gulp-changed": "^1.1.0",
+    "gulp-electron": "giabao/gulp-electron#master",
     "gulp-eslint": "^1.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
