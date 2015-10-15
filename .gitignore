@@ -5,3 +5,5 @@ bower_components
 .DS_STORE
 /dist
 build/reports
+typings/core-js
+typings/whatwg-fetch
