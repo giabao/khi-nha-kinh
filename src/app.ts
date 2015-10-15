@@ -1,4 +1,4 @@
-import {RouteConfig} from "aurelia-router";
+import {RouteConfig} from 'aurelia-router';
 
 export class App {
   private router: RouteConfig;

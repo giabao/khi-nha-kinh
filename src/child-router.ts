@@ -1,8 +1,9 @@
-import {RouteConfig} from "aurelia-router";
-export class ChildRouter {
-  private router: RouteConfig;
+import {RouteConfig} from 'aurelia-router';
 
+export class ChildRouter {
   heading = 'Child Router';
+
+  private router: RouteConfig;
 
   configureRouter(config, router) {
     config.map([

@@ -49,6 +49,19 @@ Diff from master branch:
           } |
           Set-Content .\typings\whatwg-fetch\whatwg-fetch.d.ts
 
+7. tslint
++ install
+
+        npm install gulp-tslint --save-dev
+
++ update `build\tasks\lint.js` use tslint instead of eslint
+
++ add [tslint config file](tslint.json)
+based on [sample.tslint.json](https://github.com/palantir/tslint/blob/master/docs/sample.tslint.json)
+
++ run:
+        
+        gulp lint
 
 
 ### refs
