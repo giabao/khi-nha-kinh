@@ -7,6 +7,53 @@ This skeleton is part of the [Aurelia](http://www.aurelia.io/) platform. It sets
 
 > To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/). If you have questions, we invite you to [join us on Gitter](https://gitter.im/aurelia/discuss). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome Extension and visit any of our repository's boards. You can get an overview of all Aurelia work by visiting [the framework board](https://github.com/aurelia/framework#boards).
 
+## This branch using typescript
+Diff from master branch:
+
+1. Install the gulp typescript compiler scripts
+
+        npm install gulp-typescript --save-dev
+
+2. Rename all the javascript files in src folder to typescript (using PowerShell cmdline) 
+
+        cd src
+        get-childitem -Path *.js | rename-item -NewName {$_.name -replace ".js",".ts"}
+        cd ..
+        
+3. rename `jsconfig.json` to `tsconfig.json` and update its [content](jsconfig.json)
+
+4. Modify the build script to build Typescript files
++ remove `to5, compilerOptions, assign` vars from `build\tasks\build.js` then add:
+
+        var ts = require("gulp-typescript");  
+        var tsProject = ts.createProject('tsconfig.json');
+
+
++ change `gulp.src` of `build-system` task:
+
+        gulp.src(["jspm_packages/**/*.d.ts", "typings/**/*.d.ts", paths.source])
+        
+5. install some extra .d.ts files
+
+        npm install tsd -g
+        tsd install core-js whatwg-fetch
+
+6. fix [fetch-client/issues/15](https://github.com/aurelia/fetch-client/issues/15)
+
+        rmdir /S /Q typings\es6-promise
+        
+        (Get-Content .\typings\whatwg-fetch\whatwg-fetch.d.ts) |
+          Foreach-Object {$_ -replace
+            '/// <reference path="../es6-promise/es6-promise.d.ts" />',
+            "interface BufferSource {}`ninterface URLSearchParams {}"
+          } |
+          Set-Content .\typings\whatwg-fetch\whatwg-fetch.d.ts
+
+
+
+### refs
+http://www.eriklieben.com/aurelia-skeleton-navigation-to-typescript/
+
 ## Running The App
 
 To run the app, follow these steps.

@@ -1,5 +1,9 @@
+import {RouteConfig} from "aurelia-router";
+
 export class App {
-  configureRouter(config, router) {
+  private router: RouteConfig;
+
+  configureRouter(config, router: RouteConfig) {
     config.title = 'Aurelia';
     config.map([
       { route: ['', 'welcome'], name: 'welcome',      moduleId: 'welcome',      nav: true, title: 'Welcome' },

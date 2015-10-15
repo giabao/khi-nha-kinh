@@ -1,4 +1,7 @@
+import {RouteConfig} from "aurelia-router";
 export class ChildRouter {
+  private router: RouteConfig;
+
   heading = 'Child Router';
 
   configureRouter(config, router) {
